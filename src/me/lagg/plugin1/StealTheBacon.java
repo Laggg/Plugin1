@@ -8,8 +8,8 @@ import org.bukkit.Location;
 public class StealTheBacon extends Game {
 
 	int minimumPlayersForStart = 4;
-	int maxPlayers;
-	final String CHATPREFIX = ChatColor.BLUE + "[" + ChatColor.GOLD + "STB" + ChatColor.BLUE + "[ ";
+	int maxPlayers = 12;
+	final String CHATPREFIX = ChatColor.BLUE + "[" + ChatColor.GOLD + "STB" + ChatColor.BLUE + "] ";
 	
 	public StealTheBacon(Location waitingRoom, ArrayList<Location> startingPositions) {
 		
