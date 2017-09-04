@@ -1,0 +1,17 @@
+name: Plugin1
+main: me.lagg.plugin1.Plugin1
+version: 1.0
+depend: [TitleAPI]
+commands:
+    hello:
+        description: Hello World Command
+        usage: /hello
+    fireball:
+        description: pvp lit
+        usage: /fireball
+    feed:
+        description: eat food.
+        usage: /feed
+    game1:
+        description: commands for game1
+        usage: /game1
