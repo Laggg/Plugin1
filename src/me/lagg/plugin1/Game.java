@@ -6,13 +6,15 @@ import java.util.ArrayList;
 import java.util.UUID;
 import javax.swing.Timer;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
 import org.bukkit.scoreboard.Scoreboard;
 
 import net.md_5.bungee.api.ChatColor;
 
-public abstract class Game implements ActionListener {
+public abstract class Game implements ActionListener, Listener {
 	static ArrayList<Game> games = new ArrayList<Game>();
 	UUID gameID = UUID.randomUUID();
 	ArrayList<Player> players = new ArrayList<Player>();
@@ -59,6 +61,7 @@ public abstract class Game implements ActionListener {
 	}
 	
 	public void startPregame() {
+		Bukkit.getPluginManager().registerEvents(this, Plugin1.instance);
 		games.add(this);
 		timer = new Timer(20,this);
 	}

@@ -5,13 +5,10 @@ import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerChatTabCompleteEvent;
-import org.bukkit.event.player.PlayerEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -21,6 +18,7 @@ import net.md_5.bungee.api.ChatColor;
 public class Plugin1 extends JavaPlugin implements Listener {
 
 	Logger log = getLogger();
+	static Plugin1 instance;
 	
 	@Override
 	public void onEnable() {
@@ -28,7 +26,7 @@ public class Plugin1 extends JavaPlugin implements Listener {
 		this.getCommand("hello").setExecutor(new Command1());
 		this.getCommand("fireball").setExecutor(new FireballCommand());
 		this.getCommand("feed").setExecutor(new Feed());
-		//this.getCommand("game1").setExecutor(new Game1());
+		instance = this;
 	}
 	
 	@EventHandler
@@ -47,7 +45,6 @@ public class Plugin1 extends JavaPlugin implements Listener {
 	
 	@EventHandler
 	public void onChat(AsyncPlayerChatEvent event) {
-		//event.setFormat(ChatColor.GREEN.toString() + event.getFormat());
 		event.setFormat(ChatColor.GREEN + "" + ChatColor.BOLD + "[" + ChatColor.RESET + ChatColor.GOLD + event.getPlayer().getDisplayName() + ChatColor.RESET + ChatColor.GREEN + "" + ChatColor.BOLD + "]" + ChatColor.RESET + ChatColor.DARK_GRAY +" : " + ChatColor.LIGHT_PURPLE + event.getMessage());
 		log.info(event.getFormat());
 	}
