@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 
-public class StealTheBacon extends Game {
+public class Quidditch extends Game {
 
 	int minimumPlayersForStart = 4;
 	int maxPlayers = 12;
-	final String CHATPREFIX = ChatColor.BLUE + "[" + ChatColor.GOLD + "STB" + ChatColor.BLUE + "] ";
+	final String CHATPREFIX = ChatColor.BLUE + "[" + ChatColor.GOLD + "QUIDDITCH" + ChatColor.BLUE + "] ";
 	
-	public StealTheBacon(Location waitingRoom, ArrayList<Location> startingPositions) {
+	public Quidditch(Location waitingRoom, ArrayList<Location> startingPositions) {
 		
 	}
 	
@@ -27,7 +27,7 @@ public class StealTheBacon extends Game {
 
 	@Override
 	public void start() {
-		
+		phase = EnumGamePhase.INGAME;
 	}
 
 	@Override
