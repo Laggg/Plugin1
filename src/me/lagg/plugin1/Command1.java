@@ -19,6 +19,13 @@ public class Command1 implements CommandExecutor {
 			ItemStack diamond = new ItemStack(Material.DIAMOND,30);
 			p.getInventory().addItem(diamond);
 			TitleAPI.sendTitle((Player)(arg0), 10, 10, 10, "Hello! ^-^","Welcome to the server!");
+			Quidditch q = new Quidditch(p.getLocation());
+			q.startPregame();
+			try {
+				q.addPlayer(p);
+			} catch (GameFullException e) {
+				e.printStackTrace();
+			}
 			return true;
 		}
 		return false;

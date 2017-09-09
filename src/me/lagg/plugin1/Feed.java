@@ -4,6 +4,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 
 import net.minecraft.server.v1_8_R1.EntityPlayer;
@@ -16,8 +18,8 @@ public class Feed implements CommandExecutor {
 		// TODO Auto-generated method stub
 		if(arg0 instanceof Player) {
 			Player p = (Player)arg0;
-			p.setFoodLevel(10000);
-			p.sendMessage(Integer.toString(getPing(p)));
+			Entity e = p.getWorld().spawnEntity(p.getLocation(), EntityType.ENDERMITE);
+			e.setPassenger(p);
 		}
 		return true;
 	}

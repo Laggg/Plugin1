@@ -49,6 +49,7 @@ public abstract class Game implements ActionListener, Listener {
 	
 	public synchronized void addPlayer(Player p) throws GameFullException {
 		if(players.size()>=maxPlayers) {
+			System.out.println(players.size() + ":" + maxPlayers);
 			throw new GameFullException();
 		} else {
 			players.add(p);
@@ -61,11 +62,15 @@ public abstract class Game implements ActionListener, Listener {
 	}
 	
 	public void startPregame() {
+		System.out.println("starting pregame");
 		Bukkit.getPluginManager().registerEvents(this, Plugin1.instance);
 		games.add(this);
 		timer = new Timer(20,this);
+		timer.start();
+		System.out.println("pregame started");
 	}
 	
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(phase == EnumGamePhase.PREGAME) {
 			preGameTick();
@@ -84,7 +89,7 @@ public abstract class Game implements ActionListener, Listener {
 			startTime = 0L;
 			gameStartWarningTimeIterator = -1;
 		} else if (gameStartWarningTimeIterator==-1){
-			startTime = System.currentTimeMillis() + (long)(gameStartWarningTimes[gameStartWarningTimes.length-1-gameStartWarningTimeIterator]*1000);
+			startTime = System.currentTimeMillis() + (long)(gameStartWarningTimes[gameStartWarningTimes.length-1]*1000);
 			gameStartWarningTimeIterator = 0;
 		}
 		if(gameStartWarningTimeIterator>-1 && gameStartWarningTimeIterator<gameStartWarningTimes.length) {
