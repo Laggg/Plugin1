@@ -9,6 +9,10 @@ import org.bukkit.inventory.ItemStack;
 
 import com.connorlinfoot.titleapi.TitleAPI;
 
+/**
+ * @author Ddude88888
+ *
+ */
 public class Command1 implements CommandExecutor {
 
 	@Override

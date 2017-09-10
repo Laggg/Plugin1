@@ -7,19 +7,25 @@ import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Skeleton;
 
 import net.minecraft.server.v1_8_R1.EntityPlayer;
+import net.minecraft.server.v1_8_R1.EntitySkeleton;
 
-
+/**
+ * @author Ddude88888
+ *
+ */
 public class Feed implements CommandExecutor {
+
 
 	@Override
 	public boolean onCommand(CommandSender arg0, Command arg1, String arg2, String[] arg3) {
 		// TODO Auto-generated method stub
 		if(arg0 instanceof Player) {
-			Player p = (Player)arg0;
-			Entity e = p.getWorld().spawnEntity(p.getLocation(), EntityType.ENDERMITE);
-			e.setPassenger(p);
+			Player p = (Player)(arg0);
+			Skeleton s = CustomEntitySkeleton.spawn(p.getLocation());
+			s.setPassenger(p);
 		}
 		return true;
 	}

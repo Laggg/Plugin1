@@ -14,6 +14,10 @@ import org.bukkit.scoreboard.Scoreboard;
 
 import net.md_5.bungee.api.ChatColor;
 
+/**
+ * @author Ddude88888
+ *
+ */
 public abstract class Game implements ActionListener, Listener {
 	static ArrayList<Game> games = new ArrayList<Game>();
 	UUID gameID = UUID.randomUUID();
@@ -70,6 +74,7 @@ public abstract class Game implements ActionListener, Listener {
 		System.out.println("pregame started");
 	}
 	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(phase == EnumGamePhase.PREGAME) {

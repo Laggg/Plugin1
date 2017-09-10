@@ -18,6 +18,10 @@ import org.bukkit.scheduler.BukkitScheduler;
 import net.minecraft.server.v1_8_R1.EntityInsentient;
 import net.minecraft.server.v1_8_R1.EntityTypes;
 
+/**
+ * @author Ddude88888
+ *
+ */
 public class Quidditch extends Game {
 
 	{

@@ -9,6 +9,10 @@ import net.minecraft.server.v1_8_R1.EntityLiving;
 import net.minecraft.server.v1_8_R1.MathHelper;
 import net.minecraft.server.v1_8_R1.World;
 
+/**
+ * @author Ddude88888
+ *
+ */
 public class Broom extends EntityEndermite {
 
 	public Broom(World world) {

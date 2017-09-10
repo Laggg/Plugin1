@@ -6,6 +6,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Player;
 
+/**
+ * @author Ddude88888
+ *
+ */
 public class FireballCommand implements CommandExecutor {
 
 	@Override

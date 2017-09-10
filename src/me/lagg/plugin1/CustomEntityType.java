@@ -1,10 +1,21 @@
 package me.lagg.plugin1;
 
+import java.lang.reflect.Field;
+import java.util.List;
+import java.util.Map;
+
 import org.bukkit.entity.EntityType;
 
+import net.minecraft.server.v1_8_R1.BiomeBase;
+import net.minecraft.server.v1_8_R1.BiomeMeta;
 import net.minecraft.server.v1_8_R1.EntityInsentient;
 import net.minecraft.server.v1_8_R1.EntitySkeleton;
+import net.minecraft.server.v1_8_R1.EntityTypes;
 
+/**
+ * @author Ddude88888
+ *
+ */
 public enum CustomEntityType {
 	 
     SKELETON("Skeleton", 51, EntityType.SKELETON, EntitySkeleton.class, CustomEntitySkeleton.class);

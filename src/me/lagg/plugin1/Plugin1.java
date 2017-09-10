@@ -2,8 +2,10 @@ package me.lagg.plugin1;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
@@ -20,8 +22,13 @@ import net.md_5.bungee.api.ChatColor;
 import net.minecraft.server.v1_8_R1.BiomeBase;
 import net.minecraft.server.v1_8_R1.BiomeMeta;
 import net.minecraft.server.v1_8_R1.EntityEndermite;
+import net.minecraft.server.v1_8_R1.EntityInsentient;
 import net.minecraft.server.v1_8_R1.EntityTypes;
 
+/**
+ * @author Ddude88888
+ *
+ */
 public class Plugin1 extends JavaPlugin implements Listener {
 
 	public static Logger log;
@@ -79,41 +86,35 @@ public class Plugin1 extends JavaPlugin implements Listener {
 		
 	}
 	
-	public static void registerEntities(){
-	        for (CustomEntityType entity : CustomEntityType.values()){
-	            try{
-	                Method a = EntityTypes.class.getDeclaredMethod("a", new Class<?>[]{Class.class, String.class, int.class});
-	                a.setAccessible(true);
-	                a.invoke(null, entity.getCustomClass(), entity.getName(), entity.getID());
-	            }catch (Exception e){
-	                e.printStackTrace();
-	            }
-	        }
-	     
-	        for (BiomeBase biomeBase : BiomeBase.getBiomes()){
-	            if (biomeBase == null){
-	                break;
-	            }
-	         
-	            for (String field : new String[]{"K", "J", "L", "M"}){
-	                try{
-	                    Field list = BiomeBase.class.getDeclaredField(field);
-	                    list.setAccessible(true);
-	                    @SuppressWarnings("unchecked")
-	                    List<BiomeMeta> mobList = (List<BiomeMeta>) list.get(biomeBase);
-	                 
-	                    for (BiomeMeta meta : mobList){
-	                        for (CustomEntityType entity : CustomEntityType.values()){
-	                            if (entity.getNMSClass().equals(meta.b)){
-	                                meta.b = entity.getCustomClass();
-	                            }
-	                        }
-	                    }
-	                }catch (Exception e){
-	                    e.printStackTrace();
-	                }
-	            }
-	        }
-	    }
+	public void registerEntities() {
+		for(CustomEntityType t : CustomEntityType.values()) {
+			registerEntity(t.getName(),t.getID(),t.getNMSClass(),t.getCustomClass());
+		}
+	}
+	
+	public void registerEntity(String name, int id, Class<? extends EntityInsentient> nmsClass, Class<? extends EntityInsentient> customClass){
+        try {
+     
+            List<Map<?, ?>> dataMap = new ArrayList<Map<?, ?>>();
+            for (Field f : EntityTypes.class.getDeclaredFields()){
+                if (f.getType().getSimpleName().equals(Map.class.getSimpleName())){
+                    f.setAccessible(true);
+                    dataMap.add((Map<?, ?>) f.get(null));
+                }
+            }
+     
+            if (dataMap.get(2).containsKey(id)){
+                dataMap.get(0).remove(name);
+                dataMap.get(2).remove(id);
+            }
+     
+            Method method = EntityTypes.class.getDeclaredMethod("a", Class.class, String.class, int.class);
+            method.setAccessible(true);
+            method.invoke(null, customClass, name, id);
+     
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 	
 }
