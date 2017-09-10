@@ -8,6 +8,7 @@ import org.bukkit.entity.EntityType;
 
 import net.minecraft.server.v1_8_R1.BiomeBase;
 import net.minecraft.server.v1_8_R1.BiomeMeta;
+import net.minecraft.server.v1_8_R1.EntityBat;
 import net.minecraft.server.v1_8_R1.EntityInsentient;
 import net.minecraft.server.v1_8_R1.EntitySkeleton;
 import net.minecraft.server.v1_8_R1.EntityTypes;
@@ -18,7 +19,8 @@ import net.minecraft.server.v1_8_R1.EntityTypes;
  */
 public enum CustomEntityType {
 	 
-    SKELETON("Skeleton", 51, EntityType.SKELETON, EntitySkeleton.class, CustomEntitySkeleton.class);
+    SKELETON("Skeleton", 51, EntityType.SKELETON, EntitySkeleton.class, CustomEntitySkeleton.class),
+    BROOM("Bat", 65, EntityType.BAT, EntityBat.class, Broom.class);
     
     private String name;
     private int id;

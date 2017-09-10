@@ -15,3 +15,6 @@ commands:
     game1:
         description: commands for game1
         usage: /game1
+    test:
+        description: test stuff
+        usage: /test

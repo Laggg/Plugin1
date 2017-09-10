@@ -38,9 +38,7 @@ public class Plugin1 extends JavaPlugin implements Listener {
 	public void onEnable() {
 		log = getLogger();
 		Bukkit.getPluginManager().registerEvents(this, this);
-		this.getCommand("hello").setExecutor(new Command1());
-		this.getCommand("fireball").setExecutor(new FireballCommand());
-		this.getCommand("feed").setExecutor(new Feed());
+		this.getCommand("test").setExecutor(new TestCommand());
 		instance = this;
 		registerEntities();
 	}

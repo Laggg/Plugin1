@@ -73,7 +73,7 @@ public abstract class Game implements ActionListener, Listener {
 		timer.start();
 		System.out.println("pregame started");
 	}
-	
+
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
