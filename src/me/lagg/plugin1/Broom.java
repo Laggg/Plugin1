@@ -6,6 +6,7 @@ import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_8_R1.CraftWorld;
 import org.bukkit.craftbukkit.v1_8_R1.entity.CraftLivingEntity;
 import org.bukkit.entity.Bat;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Skeleton;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 
@@ -14,6 +15,7 @@ import net.minecraft.server.v1_8_R1.EntityEndermite;
 import net.minecraft.server.v1_8_R1.EntityHuman;
 import net.minecraft.server.v1_8_R1.EntityInsentient;
 import net.minecraft.server.v1_8_R1.EntityLiving;
+import net.minecraft.server.v1_8_R1.EntitySkeleton;
 import net.minecraft.server.v1_8_R1.MathHelper;
 import net.minecraft.server.v1_8_R1.World;
 
@@ -21,19 +23,19 @@ import net.minecraft.server.v1_8_R1.World;
  * @author Ddude88888
  *
  */
-public class Broom extends EntityBat {
+public class Broom extends EntityInsentient {
 
 	public Broom(World world) {
 		super(world);
 	}
 	
-    public static Bat spawn(Location loc){
+    public static LivingEntity spawn(Location loc){
         World mcWorld = ((CraftWorld) loc.getWorld()).getHandle();
         final Broom customEnt = new Broom(mcWorld);
         customEnt.setLocation(loc.getX(), loc.getY(), loc.getZ(), loc.getYaw(), loc.getPitch());
         ((CraftLivingEntity) customEnt.getBukkitEntity()).setRemoveWhenFarAway(false); //Do we want to remove it when the NPC is far away? I won
         mcWorld.addEntity(customEnt, SpawnReason.CUSTOM);
-        return (Bat) customEnt.getBukkitEntity();
+        return (LivingEntity) customEnt.getBukkitEntity();
     }
     
 	

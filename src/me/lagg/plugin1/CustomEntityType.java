@@ -20,7 +20,7 @@ import net.minecraft.server.v1_8_R1.EntityTypes;
 public enum CustomEntityType {
 	 
     SKELETON("Skeleton", 51, EntityType.SKELETON, EntitySkeleton.class, CustomEntitySkeleton.class),
-    BROOM("Bat", 65, EntityType.BAT, EntityBat.class, Broom.class);
+    BROOM("Skeleton", 51, EntityType.SKELETON, EntitySkeleton.class, Broom.class);
     
     private String name;
     private int id;

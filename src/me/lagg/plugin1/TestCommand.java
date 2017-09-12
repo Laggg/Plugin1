@@ -5,6 +5,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Bat;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Skeleton;
+import org.bukkit.entity.Zombie;
 
 public class TestCommand implements CommandExecutor {
 
@@ -13,8 +15,8 @@ public class TestCommand implements CommandExecutor {
 		
 		if(arg0 instanceof Player) {
 			Player p = (Player)(arg0);
-			Bat b = Broom.spawn(p.getLocation());
-			b.setPassenger(p);
+			Zombie s = (Zombie) Broom.spawn(p.getLocation());
+			s.setPassenger(p);
 		}
 		System.out.println("command finished");
 		return false;

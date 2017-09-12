@@ -23,7 +23,6 @@ public class CustomEntitySkeleton extends EntitySkeleton {
 	
     public CustomEntitySkeleton(World world){
         super(world);
-    	System.out.println("SPECIAL SKELLY!");
     }
  
     @Override
@@ -44,7 +43,6 @@ public class CustomEntitySkeleton extends EntitySkeleton {
     
     @Override
     public void g(float sideMot, float forMot) {
-    	System.out.println("doing g thing");
         if(this.passenger != null && this.passenger instanceof EntityHuman) {
             this.lastYaw = this.yaw = this.passenger.yaw;
             this.pitch = this.passenger.pitch * 0.5F;
