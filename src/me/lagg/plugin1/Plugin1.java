@@ -90,7 +90,7 @@ public class Plugin1 extends JavaPlugin implements Listener {
 		}
 	}
 	
-	public void registerEntity(String name, int id, Class<? extends EntityInsentient> nmsClass, Class<? extends EntityInsentient> customClass){
+	public static void registerEntity(String name, int id, Class<? extends EntityInsentient> nmsClass, Class<? extends EntityInsentient> customClass){
         try {
      
             List<Map<?, ?>> dataMap = new ArrayList<Map<?, ?>>();

@@ -19,10 +19,23 @@ import net.minecraft.server.v1_8_R1.World;
  * this applies to all skeletons spawned by spawn egg or command, but not those from natural generation in the world
  *
  */
-public class CustomEntitySkeleton extends EntitySkeleton {
+public class Broom1 extends EntitySkeleton {
 	
-    public CustomEntitySkeleton(World world){
-        super(world);
+	double speed;
+	double climb;
+	double tank;
+	double power;
+	
+    public Broom1(World world){
+        super(world);   
+    }
+    
+    public Broom1(World world, double speed, double climb, double tank, double power) {
+    	super(world);
+    	this.speed = speed;
+    	this.climb = climb;
+    	this.tank = tank;
+    	this.power = power;
     }
  
     @Override
@@ -34,7 +47,7 @@ public class CustomEntitySkeleton extends EntitySkeleton {
     
     public static Skeleton spawn(Location loc){
         World mcWorld = ((CraftWorld) loc.getWorld()).getHandle();
-        final CustomEntitySkeleton customEnt = new CustomEntitySkeleton(mcWorld);
+        final Broom1 customEnt = new Broom1(mcWorld);
         customEnt.setLocation(loc.getX(), loc.getY(), loc.getZ(), loc.getYaw(), loc.getPitch());
         ((CraftLivingEntity) customEnt.getBukkitEntity()).setRemoveWhenFarAway(false); //Do we want to remove it when the NPC is far away? I won
         mcWorld.addEntity(customEnt, SpawnReason.CUSTOM);
@@ -48,8 +61,8 @@ public class CustomEntitySkeleton extends EntitySkeleton {
             this.pitch = this.passenger.pitch * 0.5F;
             this.setYawPitch(this.yaw, this.pitch);//Update the pitch and yaw
             this.aI = this.aG = this.yaw;
-            sideMot = ((EntityLiving)this.passenger).aX * 0.5F;
-            forMot = ((EntityLiving)this.passenger).aY;
+            sideMot = ((EntityLiving)this.passenger).aX * 0.5F*(float)speed;
+            forMot = ((EntityLiving)this.passenger).aY*(float)speed;
             if(forMot <= 0.0F) {
                 forMot *= 0.25F;// Make backwards slower
             }

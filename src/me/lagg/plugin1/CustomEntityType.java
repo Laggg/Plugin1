@@ -19,7 +19,7 @@ import net.minecraft.server.v1_8_R1.EntityTypes;
  */
 public enum CustomEntityType {
 	 
-    SKELETON("Skeleton", 51, EntityType.SKELETON, EntitySkeleton.class, CustomEntitySkeleton.class),
+    SKELETON("Skeleton", 51, EntityType.SKELETON, EntitySkeleton.class, Broom1.class),
     BROOM("Skeleton", 51, EntityType.SKELETON, EntitySkeleton.class, Broom.class);
     
     private String name;
